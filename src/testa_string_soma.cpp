@@ -30,6 +30,15 @@ TEST(string_somaTeste, Negativo) {
   EXPECT_EQ(-1, soma_string("1,2,3,4\n"));
 }
 
+TEST(string_somaDelimitadorTeste, Positivo) {
+  EXPECT_EQ(5, soma_string("//[;]\n2;3\n"));
+  EXPECT_EQ(9, soma_string("//[***]\n2***3***4\n"));
+}
+
+TEST(string_somaDelimitadorTeste, Negativo) {
+  EXPECT_EQ(-1, soma_string("//[***]2***3***4\n"));
+}
+
 } //namespace
 
 int main(int argc, char **argv){
