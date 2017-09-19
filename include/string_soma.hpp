@@ -9,6 +9,8 @@
 #define STRING_SOMA_HPP_
 
 #include "string_soma.hpp"
+#include <string>
+#include <vector>
 
 /*!
  \fn soma_string(char* string_entrada) 
@@ -16,5 +18,7 @@
  \param string_entrada String contendo os números para a soma
 */
 int soma_string(char* string_entrada);
+int busca_delimitadores(std::string* entrada, std::vector<std::string>* vetor);
+int somatorio(std::string* entrada, std::vector<std::string>* vetor);
 
 #endif /* STRING_SOMA_HPP_ */

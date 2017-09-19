@@ -17,9 +17,11 @@ TEST(string_somaTeste, Positivo) {
   EXPECT_EQ(5, soma_string("1\n\n\n,4\n"));
   EXPECT_EQ(4, soma_string("1\n\n\n,\n\n\n3\n"));
   EXPECT_EQ(10, soma_string("1,2,3\n,4\n"));
+  EXPECT_EQ(3, soma_string("3,2000\n"));
 }
 
 TEST(string_somaTeste, Negativo) {
+  EXPECT_EQ(-1, soma_string("-1,2\n"));
   EXPECT_EQ(-1, soma_string("1,\n"));
   EXPECT_EQ(-1, soma_string(",2\n"));
   EXPECT_EQ(-1, soma_string("1,,2\n"));
