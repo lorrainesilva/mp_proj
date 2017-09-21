@@ -1,0 +1,27 @@
+        -:    0:Source:testa_string_soma_stdin.cpp
+        -:    0:Graph:testa_string_soma_stdin.gcno
+        -:    0:Data:testa_string_soma_stdin.gcda
+        -:    0:Runs:9
+        -:    0:Programs:1
+        -:    1:/*!
+        -:    2: \file testa_string_soma_stdin.cpp
+        -:    3: \brief Arquivo que contém a função main
+        -:    4:
+        -:    5: \author Ingrid Silva (ingridsilva@gmail.com)
+        -:    6:*/
+        -:    7:
+        -:    8:#include "string_soma.hpp"
+        -:    9:
+        -:   10:#include <iostream>
+        -:   11:#include <cstring>
+        -:   12:#include <cstdio>
+        -:   13:
+        9:   14:int main() {
+        -:   15:  char string_entrada[100];
+        9:   16:  int valor_retorno = 0;
+        -:   17:
+        9:   18:  fscanf(stdin, "%[^EOF]", string_entrada);
+        -:   19:
+        9:   20:  valor_retorno = soma_string(string_entrada);
+        9:   21:  std::cout << std::to_string(valor_retorno) << std::endl;
+       36:   22:}

@@ -1,0 +1,119 @@
+        -:    0:Source:string_soma.cpp
+        -:    0:Graph:string_soma.gcno
+        -:    0:Data:string_soma.gcda
+        -:    0:Runs:31
+        -:    0:Programs:1
+        -:    1:/*!
+        -:    2: \file string_soma.cpp
+        -:    3: \brief Arquivo que contem as implementações das funções de string_soma.hpp 
+        -:    4:
+        -:    5: \author Ingrid Silva (ingridsilva@gmail.com)
+        -:    6:*/
+        -:    7:
+        -:    8:#include "string_soma.hpp"
+        -:    9:#include <iostream>
+        -:   10:#include <string>
+        -:   11:#include <vector>
+        -:   12:
+        -:   13:/*!
+        -:   14: \fn soma_string(char* string_entrada) 
+        -:   15: \brief Função que calcula a soma dos números de uma string
+        -:   16: \param string_entrada String contendo os números para a soma
+        -:   17:*/
+       31:   18:int soma_string(char* string_entrada) {
+       62:   19:  std::string entrada = string_entrada;
+       62:   20:  std::string auxiliar;
+       62:   21:  std::vector<std::string> delimitadores = {","};
+        -:   22:  std::size_t posicao;
+       31:   23:  int valor_retorno = 0;
+        -:   24:
+       31:   25:  if (entrada.find("//[") == 0) {
+        4:   26:    posicao = entrada.find("\n");
+        4:   27:    auxiliar = entrada.substr(0, posicao + 1);
+        4:   28:    entrada.erase(0, auxiliar.size());
+        4:   29:    auxiliar.erase(0, 2);
+        4:   30:    valor_retorno = busca_delimitadores(&auxiliar, &delimitadores);
+        4:   31:    if (valor_retorno == -1) {
+        1:   32:      return -1;
+        -:   33:    }
+        -:   34:  }
+        -:   35:
+       30:   36:  return somatorio(&entrada, &delimitadores);
+        -:   37:}
+        -:   38:
+       11:   39:int busca_delimitadores(std::string* entrada, std::vector<std::string>* vetor) {
+        -:   40:  std::size_t posicao;
+        -:   41:
+       18:   42:  while(entrada->size() > 0){
+        8:   43:    if (entrada->find("[") == 0) {
+        4:   44:      posicao = entrada->find("]");
+        4:   45:      vetor->push_back(entrada->substr(1, posicao - 1));
+        4:   46:      entrada->erase(0, posicao + 1);
+        4:   47:    } else if (entrada->at(0) == '\n') {
+        3:   48:      entrada->erase(0, 1);
+        -:   49:    } else {
+        1:   50:      return -1;
+        -:   51:    }
+        -:   52:  }
+        -:   53:
+        3:   54:  return 0;
+        -:   55:}
+        -:   56:
+       30:   57:int somatorio(std::string* entrada, std::vector<std::string>* vetor) {
+       60:   58:  std::string auxiliar;
+        -:   59:  std::size_t posicao;
+       30:   60:  int numero = 0;
+       30:   61:  int soma = 0;
+       30:   62:  int conta_numeros = 0;
+       30:   63:  int conta_delimitadores = 0;
+       30:   64:  int numeros_por_linha = 0;
+       30:   65:  int contador = 0;
+       30:   66:  int valor_retorno = 0;
+        -:   67:
+      282:   68:  while (!entrada->empty()) {
+      139:   69:    if (entrada->find_first_of("0123456789") == 0) {
+       62:   70:      numero = stoi(*entrada);
+       62:   71:      auxiliar = std::to_string(numero);
+       62:   72:      entrada->erase(0, auxiliar.size());
+       62:   73:      conta_numeros++;
+       62:   74:      numeros_por_linha++;
+       62:   75:      if (numeros_por_linha > 3) {
+        2:   76:        return -1;
+        -:   77:      }
+       60:   78:      if (numero > 1000) {
+        1:   79:        numero = 0;
+        -:   80:      }
+       60:   81:      if ((conta_numeros - conta_delimitadores) != 1) {
+        8:   82:        return -1;
+        -:   83:      }
+       77:   84:    } else if (entrada->at(0) == '\n') {
+       34:   85:      entrada->erase(0, 1);
+       34:   86:      soma += numero;
+       34:   87:      numero = 0;
+       34:   88:      numeros_por_linha = 0;
+        -:   89:    } else {
+       43:   90:      contador = 0;
+       43:   91:      posicao = 1;
+      139:   92:      while (contador < vetor->size() && posicao != 0) {
+       48:   93:        if (entrada->find(vetor->at(contador)) != std::string::npos) {
+       41:   94:          if (entrada->find(vetor->at(contador)) == 0) {
+       40:   95:            posicao = 0;
+       40:   96:            entrada->erase(0, vetor->at(contador).size());
+       40:   97:            conta_delimitadores++;
+       40:   98:            soma += numero;
+       40:   99:            numero = 0;
+        -:  100:          }
+        -:  101:        }
+       48:  102:        contador++;
+        -:  103:      } //while
+       43:  104:      if (posicao != 0) {
+        3:  105:        return -1;  
+        -:  106:      }
+        -:  107:    } //else
+        -:  108:  } //while
+       17:  109:  if (numeros_por_linha != 0 || (conta_numeros - conta_delimitadores) != 1) {
+        4:  110:    return -1;
+        -:  111:  } else {
+       13:  112:    return soma;
+        -:  113:  }
+       93:  114:}

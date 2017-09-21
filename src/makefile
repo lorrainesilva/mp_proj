@@ -14,6 +14,7 @@ _OBJ = testa_string_soma_stdin.o string_soma.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 SRC = testa_string_soma.cpp string_soma.cpp
+SRC2 = testa_string_soma_stdin.cpp string_soma.cpp
 
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -21,8 +22,11 @@ $(ODIR)/%.o: %.cpp $(DEPS)
 testa_string_soma_stdin: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-coverage: $(OBJ)
+coverage: $(SRC2)
 	$(CC) $(CFLAGS) -ftest-coverage -fprofile-arcs -g $^ -o $@
 
 test: $(SRC)
 	$(CC) $(CFLAGS) $(TFLAG) -pthread $^ $(LIB) -o $@
+
+clean:
+	rm *.gcov *.gcda *.gcno obj/*.o

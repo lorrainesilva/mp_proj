@@ -78,6 +78,9 @@ int somatorio(std::string* entrada, std::vector<std::string>* vetor) {
       if (numero > 1000) {
         numero = 0;
       }
+      if ((conta_numeros - conta_delimitadores) != 1) {
+        return -1;
+      }
     } else if (entrada->at(0) == '\n') {
       entrada->erase(0, 1);
       soma += numero;
@@ -97,13 +100,12 @@ int somatorio(std::string* entrada, std::vector<std::string>* vetor) {
           }
         }
         contador++;
-      }
+      } //while
       if (posicao != 0) {
         return -1;  
       }
-    }
-  }
-
+    } //else
+  } //while
   if (numeros_por_linha != 0 || (conta_numeros - conta_delimitadores) != 1) {
     return -1;
   } else {
