@@ -10,6 +10,7 @@
 
 namespace {
 
+/// Teste da função soma_string para strings válidas sem definição de delimitadores
 TEST(string_somaTeste, Positivo) {
   EXPECT_EQ(3, soma_string("1,2\n"));
   EXPECT_EQ(6, soma_string("3,2,1\n"));
@@ -20,6 +21,7 @@ TEST(string_somaTeste, Positivo) {
   EXPECT_EQ(3, soma_string("3,2000\n"));
 }
 
+/// Teste da função soma_string para strings inválidas sem definição de delimitadores
 TEST(string_somaTeste, Negativo) {
   EXPECT_EQ(-1, soma_string("-1,2\n"));
   EXPECT_EQ(-1, soma_string("1,\n"));
@@ -32,11 +34,13 @@ TEST(string_somaTeste, Negativo) {
   EXPECT_EQ(-1, soma_string("1,2,3,4\n"));
 }
 
+/// Teste da função soma_string para strings válidas com definição de delimitadores
 TEST(string_somaDelimitadorTeste, Positivo) {
   EXPECT_EQ(5, soma_string("//[;]\n2;3\n"));
   EXPECT_EQ(9, soma_string("//[***]\n2***3***4\n"));
 }
 
+/// Teste da função soma_string para strings inválidas com definição de delimitadores
 TEST(string_somaDelimitadorTeste, Negativo) {
   EXPECT_EQ(-1, soma_string("//[***]2***3***4\n"));
 }

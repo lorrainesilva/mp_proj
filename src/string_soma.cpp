@@ -12,8 +12,14 @@
 
 /*!
  \fn soma_string(char* string_entrada) 
- \brief Função que calcula a soma dos números de uma string
- \param string_entrada String contendo os números para a soma
+ \brief Função que calcula a soma dos números de uma string.
+
+ A função verifica se na string_entrada houve a definição de delimitadores customizados, se sim 
+ a funçao busca_delimitadores é chamada e em sequência a função somatorio, do contrário apenas a 
+ função somatorio é chamada.
+
+ \param string_entrada String contendo os números para a soma.
+ \return -1 para strings inválidas e o resultado da soma para strings válidas.
 */
 int soma_string(char* string_entrada) {
   std::string entrada = string_entrada;
@@ -36,6 +42,18 @@ int soma_string(char* string_entrada) {
   return somatorio(&entrada, &delimitadores);
 }
 
+/*!
+ \fn busca_delimitadores(std::string* entrada, std::vector<std::string>* vetor) ;
+ \brief Realiza a busca por delimitadores em uma string e retorna os delimitadores encontrados.
+
+ Percorre a string entrada buscando os novos delimitadores. Ao encontrar, o mesmo é adicionado ao 
+ vector vetor e em seguida o delimitador encontrado é removido da string. O código finaliza ao obter 
+ uma string entrada vazia ou se a string entrada for inválida.
+
+ \param entrada String contendo os delimitadores.
+ \param vetor Vector de strings onde serão armazenados os delimitadores encontrados.
+ \return 0 para strings válidas e -1 para strings inválidas.
+*/
 int busca_delimitadores(std::string* entrada, std::vector<std::string>* vetor) {
   std::size_t posicao;
 
@@ -54,6 +72,24 @@ int busca_delimitadores(std::string* entrada, std::vector<std::string>* vetor) {
   return 0;
 }
 
+/*!
+ \fn somatorio(std::string* entrada, std::vector<std::string>* vetor) ;
+ \brief Indentifica e soma os números presentes na string entrada.
+
+ Busca os números e os delimitadores dentro da string entrada. Ao encontrar um número, 
+ o mesmo é convertido para inteiro e armazenado e os caracteres do númro são removidos 
+ da sting. O número só é somado aos demais após um delimitador ou uma quebra de linha 
+ ser encontrada. A cada novo número encontrado, é calculado a diferença entre a quantidade
+ de números e a quantidade de delimitadores, que tal diferença sempre deve ser igual a 1.
+ Ao encontrar um delimitador ou uma quebra de linha, um processo diferente é executado 
+ (acréscimo no contador de delimitadores ou redefinição do valor de números por linha) e logo 
+ após o delimitador ou quebra de linha é removido da string. A função termina quando a string 
+ entrada se torna vazia ou se a string entrada for invalida.
+
+ \param entrada String contendo os números e delimitadores.
+ \param vetor Vector de strings onde estão armazenados os delimitadores.
+ \return Resultado da soma dos números para strings válidas e -1 para strings inválidas.
+*/
 int somatorio(std::string* entrada, std::vector<std::string>* vetor) {
   std::string auxiliar;
   std::size_t posicao;

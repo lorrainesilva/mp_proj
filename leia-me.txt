@@ -1,0 +1,23 @@
+Makefile: Comandos
+OBS: tais comandos dever ser executados de dentro da pasta src.
+
+Link do github
+https://github.com/lorrainesilva/mp_proj
+
+    - make obj/NomeDoArquivo.o
+Cria o .o do arquivo expecificado.
+Ex: make obj/string_soma.o irá criar o arquivo string_soma.o
+
+    - make testa_string_soma_stdin
+Cria o arquivo executável (testa_string_soma_stdin) do código testa_string_soma_stdin.cpp. Para isso 
+os arquivos string_soma.o e testa_string_soma_stdin.o já devem existir.
+
+    - make coverage
+Cria o arquivo executável (coverage) do código testa_string_soma_stdin.cpp para a verficação de 
+porcentagem de código coberto pelos testes.
+
+    - make test
+Cria o arquivo executável (test) do código testa_string_soma.cpp para a execução dos testes das funções 
+implementadas utilizando o gtest.
+
+
