@@ -1,0 +1,126 @@
+\section{include/string\+\_\+soma.hpp File Reference}
+\label{string__soma_8hpp}\index{include/string\+\_\+soma.\+hpp@{include/string\+\_\+soma.\+hpp}}
+
+
+Arquivo de cabeçalhos das funções de \doxyref{string\+\_\+soma.\+cpp}{p.}{string__soma_8cpp}.  
+
+
+{\ttfamily \#include \char`\"{}string\+\_\+soma.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for string\+\_\+soma.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ soma\+\_\+string} (char $\ast$string\+\_\+entrada)
+\begin{DoxyCompactList}\small\item\em Função que calcula a soma dos números de uma string. \end{DoxyCompactList}\item 
+int \textbf{ busca\+\_\+delimitadores} (std\+::string $\ast$entrada, std\+::vector$<$ std\+::string $>$ $\ast$vetor)
+\begin{DoxyCompactList}\small\item\em Realiza a busca por delimitadores em uma string e retorna os delimitadores encontrados. \end{DoxyCompactList}\item 
+int \textbf{ somatorio} (std\+::string $\ast$entrada, std\+::vector$<$ std\+::string $>$ $\ast$vetor)
+\begin{DoxyCompactList}\small\item\em Indentifica e soma os números presentes na string entrada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Arquivo de cabeçalhos das funções de \doxyref{string\+\_\+soma.\+cpp}{p.}{string__soma_8cpp}. 
+
+\begin{DoxyAuthor}{Author}
+Ingrid Silva ({\tt ingridsilva@gmail.\+com}) 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\label{string__soma_8hpp_a7db9d324ca3aca0314c136f24db5e0d2}} 
+\index{string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}!busca\+\_\+delimitadores@{busca\+\_\+delimitadores}}
+\index{busca\+\_\+delimitadores@{busca\+\_\+delimitadores}!string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}}
+\subsubsection{busca\+\_\+delimitadores()}
+{\footnotesize\ttfamily busca\+\_\+delimitadores (\begin{DoxyParamCaption}\item[{std\+::string $\ast$}]{entrada,  }\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{vetor }\end{DoxyParamCaption})}
+
+
+
+Realiza a busca por delimitadores em uma string e retorna os delimitadores encontrados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & String contendo os delimitadores. \\
+\hline
+{\em vetor} & Vector de strings onde serão armazenados os delimitadores encontrados. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 para strings válidas e -\/1 para strings inválidas.
+\end{DoxyReturn}
+Percorre a string entrada buscando os novos delimitadores. Ao encontrar, o mesmo é adicionado ao vector vetor e em seguida o delimitador encontrado é removido da string. O código finaliza ao obter uma string entrada vazia ou se a string entrada for inválida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & String contendo os delimitadores. \\
+\hline
+{\em vetor} & Vector de strings onde serão armazenados os delimitadores encontrados. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 para strings válidas e -\/1 para strings inválidas. 
+\end{DoxyReturn}
+\mbox{\label{string__soma_8hpp_a5e05ec4700872c44ab0b5d73463e0d63}} 
+\index{string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}!soma\+\_\+string@{soma\+\_\+string}}
+\index{soma\+\_\+string@{soma\+\_\+string}!string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}}
+\subsubsection{soma\+\_\+string()}
+{\footnotesize\ttfamily soma\+\_\+string (\begin{DoxyParamCaption}\item[{char $\ast$}]{string\+\_\+entrada }\end{DoxyParamCaption})}
+
+
+
+Função que calcula a soma dos números de uma string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\+\_\+entrada} & String contendo os números para a soma. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 para strings inválidas e o resultado da soma para strings válidas.
+\end{DoxyReturn}
+A função verifica se na string\+\_\+entrada houve a definição de delimitadores customizados, se sim a funçao busca\+\_\+delimitadores é chamada e em sequência a função somatorio, do contrário apenas a função somatorio é chamada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\+\_\+entrada} & String contendo os números para a soma. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 para strings inválidas e o resultado da soma para strings válidas. 
+\end{DoxyReturn}
+\mbox{\label{string__soma_8hpp_aafd15287f737f9d5f3dd8cc241a2d140}} 
+\index{string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}!somatorio@{somatorio}}
+\index{somatorio@{somatorio}!string\+\_\+soma.\+hpp@{string\+\_\+soma.\+hpp}}
+\subsubsection{somatorio()}
+{\footnotesize\ttfamily somatorio (\begin{DoxyParamCaption}\item[{std\+::string $\ast$}]{entrada,  }\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{vetor }\end{DoxyParamCaption})}
+
+
+
+Indentifica e soma os números presentes na string entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & String contendo os números e delimitadores. \\
+\hline
+{\em vetor} & Vector de strings onde estão armazenados os delimitadores. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da soma dos números para strings válidas e -\/1 para strings inválidas.
+\end{DoxyReturn}
+Busca os números e os delimitadores dentro da string entrada. Ao encontrar um número, o mesmo é convertido para inteiro e armazenado e os caracteres do númro são removidos da sting. O número só é somado aos demais após um delimitador ou uma quebra de linha ser encontrada. A cada novo número encontrado, é calculado a diferença entre a quantidade de números e a quantidade de delimitadores, que tal diferença sempre deve ser igual a 1. Ao encontrar um delimitador ou uma quebra de linha, um processo diferente é executado (acréscimo no contador de delimitadores ou redefinição do valor de números por linha) e logo após o delimitador ou quebra de linha é removido da string. A função termina quando a string entrada se torna vazia ou se a string entrada for invalida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & String contendo os números e delimitadores. \\
+\hline
+{\em vetor} & Vector de strings onde estão armazenados os delimitadores. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da soma dos números para strings válidas e -\/1 para strings inválidas. 
+\end{DoxyReturn}
